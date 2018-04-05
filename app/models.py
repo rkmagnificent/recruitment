@@ -21,7 +21,7 @@ class ApplicantsDetails(models.Model):
 
 class Resumes(models.Model):
     applicant = models.ForeignKey(ApplicantsDetails, on_delete=models.CASCADE)
-    resume_path = models.FileField(upload_to='documents/')
+    resume_path = models.FileField(upload_to='files/')
     uploaded_on = models.DateTimeField(auto_now_add=True, null=True)
 
 

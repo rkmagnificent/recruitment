@@ -1,0 +1,16 @@
+{% extends "./base_generic.html" %} {% block title %}Application{% endblock %} {% block content %}
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <form class="form-inline" method="post"> {% csrf_token %} {% for field in form %}
+            <div class="form-group col-xs-4">
+                <label class="col-xs-12 control-label p-1">{{ field.label }}</label>
+                {{ field }}
+            </div>
+            {% endfor %}
+        </form>
+    </div>
+    <div class="justify-content-center">
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+</div>
+{% endblock %}
