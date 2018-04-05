@@ -15,3 +15,17 @@ class ApplicantsDetails(models.Model):
     email = models.EmailField(max_length=255)
     applied_position = models.CharField(max_length=50)
     terms_and_conditions = models.BooleanField(default=False)
+    created_on = models.DateTimeField(auto_now_add=True, null=True)
+    updated_on = models.DateTimeField(auto_now=True, null=True)
+
+
+class Resumes(models.Model):
+    applicant = models.ForeignKey(ApplicantsDetails, on_delete=models.CASCADE)
+    resume_path = models.FileField(upload_to='documents/')
+    uploaded_on = models.DateTimeField(auto_now_add=True, null=True)
+
+
+class ApplicationStatus(models.Model):
+    applicant = models.ForeignKey(ApplicantsDetails, on_delete=models.CASCADE)
+    status = models.CharField(max_length=10)
+    updated_on = models.DateTimeField(auto_now=True, null=True)
